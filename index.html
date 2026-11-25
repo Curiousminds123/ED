@@ -25,13 +25,12 @@
         <span class="menu-toggle-label">Menú</span>
         <span class="menu-lines" aria-hidden="true"></span>
       </button>
-      <nav class="primary-nav index-nav" id="primary-nav" aria-label="Índice principal de EDOCENTIA">
-        <a class="index-nav-link nav-home" href="#contenido"><span class="index-nav-icon" aria-hidden="true">⌂</span>Inicio</a>
-        <a class="index-nav-link nav-tools" href="#herramientas"><span class="index-nav-icon" aria-hidden="true">▦</span>Herramientas</a>
-        <a class="index-nav-link nav-library" href="#biblioteca"><span class="index-nav-icon" aria-hidden="true">▤</span>Biblioteca</a>
-        <a class="index-nav-link nav-demos" href="#novedades"><span class="index-nav-icon" aria-hidden="true">✳</span>Demos</a>
-        <a class="index-nav-link nav-about" href="#sobre-edocentia"><span class="index-nav-icon" aria-hidden="true">◎</span>Proyecto</a>
-        <a class="nav-cta" href="apps.html">Ver recursos <span aria-hidden="true">↗</span></a>
+      <nav class="primary-nav" id="primary-nav" aria-label="Principal">
+        <a href="#herramientas">Herramientas</a>
+        <a href="#biblioteca">Biblioteca</a>
+        <a href="#novedades">Demos</a>
+        <a href="#sobre-edocentia">Sobre EDOCENTIA</a>
+        <a class="nav-cta" href="apps.html">108 recursos <span aria-hidden="true">↗</span></a>
       </nav>
     </div>
   </header>
@@ -40,7 +39,7 @@
     <section class="hero shell">
       <div class="hero-copy">
         <p class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span> Ideas y herramientas para el aula</p>
-        <h1>Menos tiempo en tareas repetidas.<br><em>Más tiempo para enseñar.</em></h1>
+        <h1 class="hero-title" aria-label="Menos tiempo en tareas repetidas. Más tiempo para enseñar."><span class="hero-title-line" aria-hidden="true">Menos tiempo en tareas repetidas.</span><br><em><span class="hero-title-line" aria-hidden="true">Más tiempo para enseñar.</span></em></h1>
         <p class="hero-intro">Un espacio de trabajo para preparar clases, evaluar y dar forma a buenas ideas. Herramientas útiles, hechas pensando en el día a día docente.</p>
         <div class="hero-actions">
           <a class="button button-primary" href="#herramientas">Ver herramientas <span aria-hidden="true">↓</span></a>
@@ -73,9 +72,9 @@
 
     <section class="trust-strip" aria-label="Características del proyecto">
       <div class="shell trust-inner">
-        <p><strong>10</strong><span>herramientas docentes</span></p>
+        <p><strong>9</strong><span>herramientas docentes</span></p>
         <span class="trust-divider" aria-hidden="true"></span>
-        <p><strong>125</strong><span>recursos con licencia compartir igual</span></p>
+        <p><strong>108</strong><span>recursos con licencia compartir igual</span></p>
         <span class="trust-divider" aria-hidden="true"></span>
         <p><strong>En línea</strong><span>acceso desde el navegador</span></p>
       </div>
@@ -96,97 +95,79 @@
         </div>
         <p class="section-intro">Ideas prácticas para distintos momentos de la enseñanza. Abre una herramienta y adáptala a tu grupo.</p>
       </div>
-      <div class="shelf-grid">
-        <a class="shelf-item shelf-create" href="#herramientas" data-shelf-filter="crear">
+      <div class="shelf-grid" aria-label="Áreas de trabajo">
+        <div class="shelf-item shelf-create">
           <span class="shelf-count">03 <small>HERRAMIENTAS</small></span><span class="shelf-symbol" aria-hidden="true">✳</span>
           <h3>Crear y planificar</h3><p>Diseña retos, secuencias e ideas para tu próxima clase.</p>
-          <span class="shelf-link">Ver herramientas <span aria-hidden="true">→</span></span>
-        </a>
-        <a class="shelf-item shelf-assess" href="#herramientas" data-shelf-filter="evaluar">
+        </div>
+        <div class="shelf-item shelf-assess">
           <span class="shelf-count">03 <small>HERRAMIENTAS</small></span><span class="shelf-symbol" aria-hidden="true">↗</span>
           <h3>Evaluar y acompañar</h3><p>Lee el progreso y ofrece feedback que ayude a avanzar.</p>
-          <span class="shelf-link">Ver herramientas <span aria-hidden="true">→</span></span>
-        </a>
-        <a class="shelf-item shelf-play" href="#herramientas" data-shelf-filter="activar">
+        </div>
+        <div class="shelf-item shelf-play">
           <span class="shelf-count">02 <small>HERRAMIENTAS</small></span><span class="shelf-symbol" aria-hidden="true">↝</span>
           <h3>Activar y jugar</h3><p>Empieza con energía; convierte objetivos en misiones.</p>
-          <span class="shelf-link">Ver herramientas <span aria-hidden="true">→</span></span>
-        </a>
-        <a class="shelf-item shelf-explore" href="#herramientas" data-shelf-filter="explorar">
-          <span class="shelf-count">02 <small>HERRAMIENTAS</small></span><span class="shelf-symbol" aria-hidden="true">◎</span>
-          <h3>Explorar y comunicar</h3><p>Prueba, observa y comparte con tu comunidad educativa.</p>
-          <span class="shelf-link">Ver herramientas <span aria-hidden="true">→</span></span>
-        </a>
+        </div>
+        <div class="shelf-item shelf-explore">
+          <span class="shelf-count">01 <small>HERRAMIENTA</small></span><span class="shelf-symbol" aria-hidden="true">◎</span>
+          <h3>Explorar</h3><p>Prueba y observa nuevas ideas para el aula.</p>
+        </div>
       </div>
     </section>
 
     <section class="section shell" id="herramientas">
       <div class="section-heading">
         <div>
-          <p class="eyebrow">Un buen punto de partida</p>
+          <p class="eyebrow">Un mapa para explorar</p>
           <h2>Herramientas para cada momento de clase</h2>
         </div>
-        <p class="section-intro">Elige una necesidad y continúa desde ahí. Cada herramienta abre directamente en tu navegador.</p>
+        <p class="section-intro">Sigue el recorrido y pulsa un icono para descubrir qué puedes hacer.</p>
       </div>
-      <div class="tool-filters" role="group" aria-label="Filtrar herramientas por momento de clase">
-        <button class="filter-chip is-active" type="button" data-tool-filter="todas" aria-pressed="true">Todas <span>10</span></button>
-        <button class="filter-chip" type="button" data-tool-filter="crear" aria-pressed="false">Crear y planificar</button>
-        <button class="filter-chip" type="button" data-tool-filter="evaluar" aria-pressed="false">Evaluar y acompañar</button>
-        <button class="filter-chip" type="button" data-tool-filter="activar" aria-pressed="false">Activar y jugar</button>
-        <button class="filter-chip" type="button" data-tool-filter="explorar" aria-pressed="false">Explorar y comunicar</button>
-        <span class="filter-count" id="tool-count" aria-live="polite">10 herramientas</span>
+      <div class="tool-map" role="group" aria-label="Mapa interactivo de las nueve herramientas docentes">
+        <svg class="map-routes" viewBox="0 0 1000 560" preserveAspectRatio="none" aria-hidden="true">
+          <defs>
+            <marker id="map-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor"/></marker>
+          </defs>
+          <path d="M140 100 C260 65 365 135 465 100" marker-end="url(#map-arrow)"/>
+          <path d="M535 100 C650 65 755 135 860 100" marker-end="url(#map-arrow)"/>
+          <path d="M900 145 C955 185 955 220 900 245" marker-end="url(#map-arrow)"/>
+          <path d="M860 280 C745 245 645 315 535 280" marker-end="url(#map-arrow)"/>
+          <path d="M465 280 C350 245 250 315 140 280" marker-end="url(#map-arrow)"/>
+          <path d="M100 315 C45 355 45 405 100 425" marker-end="url(#map-arrow)"/>
+          <path d="M140 460 C255 425 365 495 465 460" marker-end="url(#map-arrow)"/>
+          <path d="M535 460 C650 425 755 495 860 460" marker-end="url(#map-arrow)"/>
+        </svg>
+        <button class="map-node map-node-01 is-active" type="button" data-map-node data-map-number="01" data-map-title="Tareas competenciales" data-map-description="Diseña retos conectados con la vida real y con lo que quieres que tu grupo aprenda." aria-label="01. Tareas competenciales" aria-controls="map-detail" aria-pressed="true">
+          <span class="map-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 4.5h10a2 2 0 0 1 2 2v13H5v-13a2 2 0 0 1 2-2Z"/><path d="M9 4.5V3h6v1.5M8.5 9h7M8.5 12.5h7M8.5 16h4"/></svg></span><span class="map-node-label">Tareas competenciales</span><span class="map-node-number">01</span>
+        </button>
+        <button class="map-node map-node-02" type="button" data-map-node data-map-number="02" data-map-title="Visualizador de notas" data-map-description="Lee resultados y tendencias para comprender mejor el progreso del grupo." aria-label="02. Visualizador de notas" aria-controls="map-detail" aria-pressed="false">
+          <span class="map-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 19.5h16M6.5 17V11h3v6M11 17V6h3v11M15.5 17V9h3v8"/></svg></span><span class="map-node-label">Visualizador de notas</span><span class="map-node-number">02</span>
+        </button>
+        <button class="map-node map-node-03" type="button" data-map-node data-map-number="03" data-map-title="Warm-up de aula" data-map-description="Activa la clase con dinámicas breves para empezar con energía." aria-label="03. Warm-up de aula" aria-controls="map-detail" aria-pressed="false">
+          <span class="map-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m13.5 2.5-9 11h6l-.5 8 9-11h-6l.5-8Z"/></svg></span><span class="map-node-label">Warm-up de aula</span><span class="map-node-number">03</span>
+        </button>
+        <button class="map-node map-node-04" type="button" data-map-node data-map-number="04" data-map-title="Ideas para clase" data-map-description="Encuentra nuevas maneras de abordar un tema y convertirlo en una experiencia para el aula." aria-label="04. Ideas para clase" aria-controls="map-detail" aria-pressed="false">
+          <span class="map-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 18h6M10 21h4M8.2 14.5a7 7 0 1 1 7.6 0c-.9.6-1.3 1.3-1.4 2.5h-4.8c-.1-1.2-.5-1.9-1.4-2.5Z"/><path d="M12 4v2M5.5 7l1.5 1M18.5 7 17 8"/></svg></span><span class="map-node-label">Ideas para clase</span><span class="map-node-number">04</span>
+        </button>
+        <button class="map-node map-node-05" type="button" data-map-node data-map-number="05" data-map-title="Laboratorio y simulador" data-map-description="Prepara experimentos y simulaciones para observar, probar y explorar." aria-label="05. Laboratorio y simulador" aria-controls="map-detail" aria-pressed="false">
+          <span class="map-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 3h6M10 3v6l-5 9a2 2 0 0 0 1.8 3h10.4a2 2 0 0 0 1.8-3l-5-9V3M7.5 15h9"/></svg></span><span class="map-node-label">Laboratorio y simulador</span><span class="map-node-number">05</span>
+        </button>
+        <button class="map-node map-node-06" type="button" data-map-node data-map-number="06" data-map-title="Programaciones didácticas" data-map-description="Organiza objetivos, actividades y secuencias didácticas con una visión de conjunto." aria-label="06. Programaciones didácticas" aria-controls="map-detail" aria-pressed="false">
+          <span class="map-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M8 3v4M16 3v4M4 9h16M8 13h3M8 16h7"/></svg></span><span class="map-node-label">Programaciones didácticas</span><span class="map-node-number">06</span>
+        </button>
+        <button class="map-node map-node-07" type="button" data-map-node data-map-number="07" data-map-title="Exámenes y pruebas" data-map-description="Prepara pruebas, preguntas y criterios claros para evaluar los aprendizajes." aria-label="07. Exámenes y pruebas" aria-controls="map-detail" aria-pressed="false">
+          <span class="map-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 4h10a2 2 0 0 1 2 2v14H5V6a2 2 0 0 1 2-2Z"/><path d="m8 10 1.5 1.5L12 9M13.5 10H16M8 15l1.5 1.5L12 14M13.5 15H16"/></svg></span><span class="map-node-label">Exámenes y pruebas</span><span class="map-node-number">07</span>
+        </button>
+        <button class="map-node map-node-08" type="button" data-map-node data-map-number="08" data-map-title="Feedback formativo" data-map-description="Escribe comentarios útiles que acompañen el progreso y ayuden a dar el siguiente paso." aria-label="08. Feedback formativo" aria-controls="map-detail" aria-pressed="false">
+          <span class="map-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 5.5h14a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-7l-5 3v-3H5a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2Z"/><path d="m8 11 2.2 2.2L16 8"/></svg></span><span class="map-node-label">Feedback formativo</span><span class="map-node-number">08</span>
+        </button>
+        <button class="map-node map-node-09" type="button" data-map-node data-map-number="09" data-map-title="Gamificación" data-map-description="Convierte objetivos de aprendizaje en misiones, retos y experiencias motivadoras." aria-label="09. Gamificación" aria-controls="map-detail" aria-pressed="false">
+          <span class="map-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m12 3 2.2 5.3L20 10l-4.3 3.5L17 19l-5-3-5 3 1.3-5.5L4 10l5.8-1.7L12 3Z"/><path d="m19 16 .7 1.6L21.5 18l-1.8.7L19 20.5l-.7-1.8-1.8-.7 1.8-.4L19 16Z"/></svg></span><span class="map-node-label">Gamificación</span><span class="map-node-number">09</span>
+        </button>
       </div>
-      <div class="tool-grid">
-        <a class="tool-card" data-category="crear" href="modulo-1-tareas-competenciales/index.html">
-          <span class="tool-number">01</span><span class="tool-type">Diseño de aprendizaje</span>
-          <h3>Tareas competenciales</h3><p>Crea retos conectados con la vida real.</p>
-          <span class="card-link">Abrir herramienta <span aria-hidden="true">↗</span></span>
-        </a>
-        <a class="tool-card" data-category="evaluar" href="modulo-2-visualizador-notas/index.html">
-          <span class="tool-number">02</span><span class="tool-type">Evaluación</span>
-          <h3>Visualizador de notas</h3><p>Comprende resultados y tendencias del grupo.</p>
-          <span class="card-link">Abrir herramienta <span aria-hidden="true">↗</span></span>
-        </a>
-        <a class="tool-card" data-category="activar" href="modulo-3-warmup/index.html">
-          <span class="tool-number">03</span><span class="tool-type">Activación</span>
-          <h3>Warm-up de aula</h3><p>Dinámicas breves para empezar con energía.</p>
-          <span class="card-link">Abrir herramienta <span aria-hidden="true">↗</span></span>
-        </a>
-        <a class="tool-card" data-category="crear" href="modulo-4-ideas-clase/index.html">
-          <span class="tool-number">04</span><span class="tool-type">Creatividad</span>
-          <h3>Ideas para clase</h3><p>Encuentra nuevas maneras de abordar un tema.</p>
-          <span class="card-link">Abrir herramienta <span aria-hidden="true">↗</span></span>
-        </a>
-        <a class="tool-card" data-category="explorar" href="modulo-5-laboratorio/index.html">
-          <span class="tool-number">05</span><span class="tool-type">Ciencia y práctica</span>
-          <h3>Laboratorio y simulador</h3><p>Prepara experimentos y simulaciones para explorar.</p>
-          <span class="card-link">Abrir herramienta <span aria-hidden="true">↗</span></span>
-        </a>
-        <a class="tool-card" data-category="crear" href="modulo-6-programaciones/index.html">
-          <span class="tool-number">06</span><span class="tool-type">Planificación</span>
-          <h3>Programaciones didácticas</h3><p>Organiza objetivos y secuencias didácticas.</p>
-          <span class="card-link">Abrir herramienta <span aria-hidden="true">↗</span></span>
-        </a>
-        <a class="tool-card" data-category="evaluar" href="modulo-7-examenes/index.html">
-          <span class="tool-number">07</span><span class="tool-type">Evaluación</span>
-          <h3>Exámenes y pruebas</h3><p>Crea pruebas, preguntas y criterios claros.</p>
-          <span class="card-link">Abrir herramienta <span aria-hidden="true">↗</span></span>
-        </a>
-        <a class="tool-card" data-category="evaluar" href="modulo-8-feedback/index.html">
-          <span class="tool-number">08</span><span class="tool-type">Acompañamiento</span>
-          <h3>Feedback formativo</h3><p>Escribe comentarios que acompañen el progreso.</p>
-          <span class="card-link">Abrir herramienta <span aria-hidden="true">↗</span></span>
-        </a>
-        <a class="tool-card" data-category="activar" href="modulo-9-gamificacion/index.html">
-          <span class="tool-number">09</span><span class="tool-type">Motivación</span>
-          <h3>Gamificación</h3><p>Convierte objetivos en misiones y retos.</p>
-          <span class="card-link">Abrir herramienta <span aria-hidden="true">↗</span></span>
-        </a>
-        <a class="tool-card" data-category="explorar" href="modulo-10-comunicacion/index.html">
-          <span class="tool-number">10</span><span class="tool-type">Comunidad educativa</span>
-          <h3>Comunicación</h3><p>Prepara mensajes para familias y comunidad.</p>
-          <span class="card-link">Abrir herramienta <span aria-hidden="true">↗</span></span>
-        </a>
+      <div class="map-detail" id="map-detail" aria-live="polite">
+        <span class="map-detail-number" id="map-detail-number">01</span>
+        <div><h3 id="map-detail-title">Tareas competenciales</h3><p id="map-detail-description">Diseña retos conectados con la vida real y con lo que quieres que tu grupo aprenda.</p></div>
       </div>
     </section>
 
@@ -227,32 +208,32 @@
         <p class="section-intro">Dos herramientas propias para pasar de una idea a un recurso revisable y útil.</p>
       </div>
       <div class="exhibit-grid">
-        <article class="exhibit-card">
-          <a class="exhibit-visual visual-prompts" href="app-ia.html" aria-label="Abrir App IA interactiva para docentes">
+        <a class="exhibit-card" href="app-ia.html" aria-label="Abrir App IA interactiva para docentes">
+          <span class="exhibit-visual visual-prompts">
             <span class="visual-kicker">UNA IDEA, MUCHAS FORMAS</span>
             <span class="visual-orbit orbit-one" aria-hidden="true"></span><span class="visual-orbit orbit-two" aria-hidden="true"></span>
             <span class="visual-note">¿Qué necesitas<br>preparar hoy?</span><span class="visual-sticker" aria-hidden="true">IA<br>↗</span>
-          </a>
+          </span>
           <div class="exhibit-body">
             <div class="exhibit-meta"><span>Planificación · IA</span><span class="new-badge">HERRAMIENTA</span></div>
             <h3>App IA interactiva para docentes</h3>
             <p>Genera un prompt docente desde el contexto y el objetivo de tu clase.</p>
-            <a class="exhibit-link" href="app-ia.html">Abrir herramienta <span aria-hidden="true">→</span></a>
+            <span class="exhibit-link">Abrir herramienta <span aria-hidden="true">→</span></span>
           </div>
-        </article>
-        <article class="exhibit-card">
-          <a class="exhibit-visual visual-rubrics" href="app-rubricas.html" aria-label="Abrir Rúbricas, agentes y Vibe Coding">
+        </a>
+        <a class="exhibit-card" href="app-rubricas.html" aria-label="Abrir Rúbricas, agentes y Vibe Coding">
+          <span class="exhibit-visual visual-rubrics">
             <span class="visual-kicker">CRITERIOS CLAROS, MEJORES CONVERSACIONES</span>
             <span class="rubric-sheet" aria-hidden="true"><i></i><i></i><i></i><i></i><b>✓</b></span>
             <span class="visual-sticker sticker-violet" aria-hidden="true">01<br>— 04</span>
-          </a>
+          </span>
           <div class="exhibit-body">
             <div class="exhibit-meta"><span>Evaluación · Creación</span><span class="new-badge badge-blue">PARA EXPLORAR</span></div>
             <h3>Rúbricas, agentes y Vibe Coding</h3>
             <p>Explora rúbricas, agentes y pequeñas apps para el aula.</p>
-            <a class="exhibit-link" href="app-rubricas.html">Abrir herramienta <span aria-hidden="true">→</span></a>
+            <span class="exhibit-link">Abrir herramienta <span aria-hidden="true">→</span></span>
           </div>
-        </article>
+        </a>
       </div>
     </section>
 
@@ -262,10 +243,16 @@
           <p class="eyebrow eyebrow-light">Una biblioteca para compartir</p>
           <h2>Buenas ideas que ya están en uso.</h2>
           <p>Explora aplicaciones educativas creadas por docentes de la comunidad Vibe Coding Educativo. Cada ficha identifica a su autor y muestra la licencia declarada; la selección incluye licencias CC BY-SA y CC BY-NC-SA.</p>
-          <a class="button button-paper" href="apps.html">Entrar en la biblioteca <span aria-hidden="true">↗</span></a>
+          <div class="library-actions">
+            <a class="button button-paper" href="apps.html">Entrar en la biblioteca <span aria-hidden="true">↗</span></a>
+            <a class="button button-telegram" href="https://t.me/+F0qGBNdHTVowZjI0" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.7 3.2 18.5 20c-.2 1.2-.9 1.5-1.8.9l-5-3.7-2.4 2.3c-.3.3-.6.6-1.1.6l.4-5.1 9.3-8.4c.4-.4-.1-.6-.6-.3L5.8 13.9 1 12.4c-1-.3-1-1 .2-1.5l18.7-7.2c.9-.3 1.7.2 1.8.5Z"/></svg>
+              <span>Comunidad en Telegram</span><span aria-hidden="true">↗</span>
+            </a>
+          </div>
         </div>
         <div class="library-aside">
-          <div class="aside-number">125</div>
+          <div class="aside-number">108</div>
           <p>recursos con licencia<br><strong>Creative Commons BY-SA / BY-NC-SA</strong></p>
           <span class="aside-rule" aria-hidden="true"></span>
           <p class="aside-small">Las fichas enlazan con las aplicaciones originales. Algunas licencias limitan el uso comercial.</p>
@@ -329,6 +316,7 @@
     <div class="shell footer-directory">
       <div><span>EXPLORAR</span><a href="#herramientas">Herramientas</a><a href="#novedades">Para probar ahora</a><a href="apps.html">Biblioteca abierta</a></div>
       <div><span>RECURSOS</span><a href="app-prompts.html">Biblioteca de prompts</a><a href="app-rubricas.html">Rúbricas y agentes</a><a href="normativa-cv/index.html">Normativa docente CV</a></div>
+      <div><span>COMUNIDAD</span><a href="https://t.me/+F0qGBNdHTVowZjI0" target="_blank" rel="noopener">Comunidad en Telegram ↗</a><a href="https://curiousminds123.github.io/APP-NOTICIAS/" target="_blank" rel="noopener">Observatorio de noticias ↗</a></div>
       <p>Hecho para enseñar con tiempo,<br>criterio y curiosidad.</p>
     </div>
   </footer>
