@@ -2,14 +2,15 @@ const portalScript = document.currentScript;
 
 if (portalScript) {
   const siteRoot = new URL('../', portalScript.src);
-  if (!document.querySelector('.site-header')) {
+  const hasSiteHeader = Boolean(document.querySelector('.site-header'));
+  if (!hasSiteHeader) {
     const theme = document.createElement('link');
     theme.rel = 'stylesheet';
     theme.href = new URL('assets/theme.css', siteRoot).href;
     document.head.append(theme);
   }
 
-  if (!document.querySelector('.site-header')) {
+  if (!hasSiteHeader) {
     const navigation = document.createElement('nav');
     navigation.className = 'portal-shortcuts';
     navigation.setAttribute('aria-label', 'Navegación EDOCENTIA');
@@ -27,9 +28,11 @@ if (portalScript) {
     document.body.append(navigation);
   }
 
-  const signature = document.createElement('div');
-  signature.className = 'creator-signature';
-  signature.setAttribute('role', 'note');
-  signature.textContent = 'Creado por Ana H. Iranzo asistida con IA.';
-  document.body.append(signature);
+  if (!hasSiteHeader) {
+    const signature = document.createElement('div');
+    signature.className = 'creator-signature';
+    signature.setAttribute('role', 'note');
+    signature.textContent = 'Creado por Ana H. Iranzo asistida con IA.';
+    document.body.append(signature);
+  }
 }

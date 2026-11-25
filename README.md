@@ -5,7 +5,7 @@ Portal de herramientas para el trabajo docente, creado por Ana Hernández Iranzo
 ## Estructura
 
 - `index.html`: portada y acceso a las diez herramientas docentes.
-- `apps.html`: catálogo con búsqueda y filtro por área.
+- `apps.html`: catálogo con búsqueda y filtro por área, además de una selección de proyectos externos separada de las fichas con licencia. Se conservan 125 fichas de otros autores y sus atribuciones originales.
 - `data/apps.json`: selección de fichas del repositorio comunitario Vibe Coding Educativo con licencias que incluyen una cláusula de compartir igual (CC BY-SA y CC BY-NC-SA).
 - `modulo-*`: herramientas docentes de EDOCENTIA.
 - `app-ia.html`, `app-prompts.html`, `app-rubricas.html`: herramientas complementarias.

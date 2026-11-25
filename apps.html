@@ -8,7 +8,7 @@
   <title>Biblioteca abierta — EDOCENTIA</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/site.css">
   <link rel="stylesheet" href="assets/portal-nav.css">
   <link rel="stylesheet" href="assets/apps.css">
@@ -27,9 +27,11 @@
         <span class="menu-toggle-label">Menú</span>
         <span class="menu-lines" aria-hidden="true"></span>
       </button>
-      <nav class="primary-nav catalog-nav" id="primary-nav" aria-label="Navegación principal">
-        <a href="index.html#herramientas">Herramientas EDOCENTIA</a>
-        <a href="index.html#sobre-edocentia">El proyecto</a>
+      <nav class="primary-nav catalog-nav index-nav" id="primary-nav" aria-label="Índice principal de EDOCENTIA">
+        <a class="index-nav-link nav-home" href="index.html#contenido"><span class="index-nav-icon" aria-hidden="true">⌂</span>Inicio</a>
+        <a class="index-nav-link nav-tools" href="index.html#herramientas"><span class="index-nav-icon" aria-hidden="true">▦</span>Herramientas</a>
+        <a class="index-nav-link nav-demos" href="index.html#novedades"><span class="index-nav-icon" aria-hidden="true">✳</span>Demos</a>
+        <a class="index-nav-link nav-about" href="index.html#sobre-edocentia"><span class="index-nav-icon" aria-hidden="true">◎</span>Proyecto</a>
         <a class="nav-cta" href="https://github.com/Vibe-Coding-Educativo/app_edu" target="_blank" rel="noopener">Repositorio original <span aria-hidden="true">↗</span></a>
       </nav>
     </div>
@@ -44,6 +46,40 @@
       <div class="catalog-credit">
         <span class="credit-mark" aria-hidden="true">BY—SA</span>
         <p>Esta selección reúne licencias de compartir igual. Las licencias <strong>BY-NC-SA</strong> limitan el uso comercial; en las licencias mixtas se distingue el código de los contenidos.</p>
+      </div>
+    </section>
+
+    <section class="library-links-section shell" aria-labelledby="featured-links-heading">
+      <div class="library-links-heading">
+        <div><p class="eyebrow">Proyectos invitados</p><h2 id="featured-links-heading">Más para explorar.</h2></div>
+        <p>Una pequeña selección de demos y recursos externos. Abren en sus sitios originales.</p>
+      </div>
+      <div class="library-link-grid">
+        <a class="library-link-card" href="https://iamtechartist.com/worldline-dancer/" target="_blank" rel="noopener">
+          <span class="library-link-top"><span class="library-link-icon" aria-hidden="true">↝</span><span class="library-link-type">ARTE INTERACTIVO</span></span>
+          <h3>Worldline Dancer</h3><p>Una experiencia generativa para explorar.</p>
+          <span class="library-link-cta">Abrir proyecto <span aria-hidden="true">↗</span></span>
+        </a>
+        <a class="library-link-card" href="https://iamtechartist.com/demos/" target="_blank" rel="noopener">
+          <span class="library-link-top"><span class="library-link-icon" aria-hidden="true">✳</span><span class="library-link-type">COLECCIÓN</span></span>
+          <h3>Demos de Techartist</h3><p>Experimentos y proyectos para descubrir.</p>
+          <span class="library-link-cta">Ver demos <span aria-hidden="true">↗</span></span>
+        </a>
+        <a class="library-link-card" href="https://electronics-101-six.vercel.app/" target="_blank" rel="noopener">
+          <span class="library-link-top"><span class="library-link-icon" aria-hidden="true">⌁</span><span class="library-link-type">CIENCIA · ELECTRÓNICA</span></span>
+          <h3>Electronics 101</h3><p>Explora conceptos básicos de electrónica.</p>
+          <span class="library-link-cta">Abrir recurso <span aria-hidden="true">↗</span></span>
+        </a>
+        <a class="library-link-card" href="https://curiousminds123.github.io/UNIT6B1.1/" target="_blank" rel="noopener">
+          <span class="library-link-top"><span class="library-link-icon" aria-hidden="true">Aa</span><span class="library-link-type">INGLÉS · B1</span></span>
+          <h3>Unit 6 · B1.1</h3><p>Practica inglés con una unidad interactiva.</p>
+          <span class="library-link-cta">Abrir unidad <span aria-hidden="true">↗</span></span>
+        </a>
+        <a class="library-link-card" href="https://iamtechartist.com/dna-and-the-genetic-code/" target="_blank" rel="noopener">
+          <span class="library-link-top"><span class="library-link-icon" aria-hidden="true">DNA</span><span class="library-link-type">BIOLOGÍA · GENÉTICA</span></span>
+          <h3>DNA &amp; the Genetic Code</h3><p>Explora el ADN y el código genético.</p>
+          <span class="library-link-cta">Abrir experiencia <span aria-hidden="true">↗</span></span>
+        </a>
       </div>
     </section>
 
@@ -95,6 +131,7 @@
       <a class="footer-top" href="#contenido">Volver arriba ↑</a>
     </div>
     <div class="shell footer-bottom">
+      <span>Creado por Ana Hernández Iranzo</span>
       <span>Las licencias se muestran tal como las declara cada ficha de origen.</span>
       <a href="https://github.com/Curiousminds123/EDOCENTIA" target="_blank" rel="noopener">Código del proyecto ↗</a>
     </div>
