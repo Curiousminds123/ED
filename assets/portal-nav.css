@@ -1,0 +1,52 @@
+.portal-shortcuts {
+  position: fixed;
+  z-index: 9998;
+  top: 12px;
+  right: 14px;
+  display: flex;
+  gap: 5px;
+  padding: 5px;
+  border: 1px solid rgba(35, 44, 64, .15);
+  border-radius: 8px;
+  background: rgba(255, 253, 250, .96);
+  box-shadow: 0 2px 12px rgba(35, 44, 64, .1);
+  font: 600 10px/1.2 "DM Sans", "Segoe UI", sans-serif;
+}
+.portal-shortcuts a {
+  padding: 7px 9px;
+  color: #276879;
+  text-decoration: none;
+}
+.portal-shortcuts a:hover, .portal-shortcuts a:focus-visible {
+  border-radius: 5px;
+  background: #e2f2f1;
+  color: #24304a;
+}
+.creator-signature {
+  position: fixed;
+  z-index: 9997;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  min-height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 7px 14px;
+  border-top: 1px solid rgba(255, 255, 255, .18);
+  background: #24304a;
+  color: #fffdf8;
+  font: 700 12px/1.35 "DM Sans", "Segoe UI", sans-serif;
+  letter-spacing: .015em;
+  text-align: center;
+}
+body:has(.creator-signature) { padding-bottom: 38px !important; }
+@media (max-width: 560px) {
+  .portal-shortcuts { top: 8px; right: 8px; padding: 3px; }
+  .portal-shortcuts a { padding: 7px; font-size: 9px; }
+  .creator-signature { min-height: 36px; padding: 7px 8px; font-size: 11px; }
+}
+@media print {
+  .portal-shortcuts { display: none; }
+  .creator-signature { position: static; border: 0; }
+}

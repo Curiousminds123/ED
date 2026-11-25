@@ -1,0 +1,117 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap");
+
+:root {
+  --paper: #fff9f3 !important;
+  --paper-deep: #f0e9df !important;
+  --white: #fffdfb !important;
+  --ink: #21263a !important;
+  --muted: #66707b !important;
+  --green: #276879 !important;
+  --green-dark: #24304a !important;
+  --green-soft: #e2f2f1 !important;
+  --terracotta: #e66c5d !important;
+  --gold: #f2c65d !important;
+  --line: #e9e1d7 !important;
+  --brand-blue: #3866dc;
+  --brand-coral: #e66c5d;
+  --brand-teal: #4aa6b5;
+  --brand-yellow: #f2c65d;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  padding-bottom: 38px !important;
+  background-color: #fff9f3 !important;
+  color: #21263a !important;
+  font-family: "DM Sans", "Segoe UI", sans-serif !important;
+}
+body :not(i):not(svg):not(path):not(code) { font-family: "DM Sans", "Segoe UI", sans-serif; }
+h1, h2, h3, h4, .hero-title, .paper-title {
+  font-family: "Fraunces", Georgia, serif !important;
+  letter-spacing: -.025em;
+}
+
+aside, .sidebar, .topbar, .site-header {
+  border-color: #e9e1d7 !important;
+  background-color: #fffdfb !important;
+}
+aside, .sidebar { box-shadow: 0 4px 20px rgba(33, 38, 58, .055) !important; }
+aside nav a, .sidebar .nav-item { border-radius: 9px !important; }
+aside nav a:hover, aside nav a.active {
+  border-left-color: #3866dc !important;
+  background: #edf2ff !important;
+  color: #3158b3 !important;
+}
+
+.hero-section {
+  background-image:
+    radial-gradient(ellipse at 82% 18%, rgba(255, 255, 255, .25), transparent 31%),
+    linear-gradient(120deg, #4a70d5 0%, #508eb7 48%, #dc8578 100%) !important;
+  background-attachment: scroll !important;
+  border-radius: 0 0 24px 24px;
+}
+.hero-section, .hero-section h1, .hero-section h2, .hero-section p { color: #fffdf9 !important; }
+.hero-section a:not([class*="bg-white"]) { text-decoration-color: rgba(255,255,255,.55); }
+
+.card-pro, .task-card, .prompt-card, .glass, .stat-card, .mod-card,
+.app-card, .card, .tool-card {
+  border: 1px solid #e9e1d7 !important;
+  border-radius: 16px !important;
+  background-color: #fffdfb !important;
+  box-shadow: 0 4px 18px rgba(33, 38, 58, .055) !important;
+}
+.card-pro:hover, .task-card:hover, .prompt-card:hover, .glass:hover,
+.stat-card:hover, .mod-card:hover, .card:hover {
+  border-color: #c6d8eb !important;
+  box-shadow: 0 10px 24px rgba(49, 79, 132, .1) !important;
+}
+.mod-card { color: #21263a !important; }
+.mod-card h2, .mod-card h3, .mod-card p { color: #21263a !important; }
+.mod-card [class*="text-"] { color: #596575 !important; }
+.section-divider { background: linear-gradient(90deg, transparent, #e9e1d7 30%, #e9e1d7 70%, transparent) !important; }
+
+input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),
+select, textarea, .field-input {
+  border-color: #dce3ec !important;
+  border-radius: 9px !important;
+  background-color: #fffdfb !important;
+  color: #21263a !important;
+  font-family: "DM Sans", "Segoe UI", sans-serif !important;
+}
+input:focus, select:focus, textarea:focus, .field-input:focus {
+  border-color: #5684e8 !important;
+  box-shadow: 0 0 0 3px rgba(56, 102, 220, .12) !important;
+}
+button, [role="button"], .ai-btn, .gen-btn, .launch-btn, .copy-btn {
+  font-family: "DM Sans", "Segoe UI", sans-serif !important;
+}
+.ai-btn, .gen-btn, .launch-btn, .copy-btn { border-radius: 9px !important; }
+.ai-btn[data-ai="copilot"] {
+  border-color: #3866dc !important;
+  background: #edf2ff !important;
+  color: #3158b3 !important;
+}
+.ai-btn[data-ai="copilot"].selected {
+  border-color: #3866dc !important;
+  background: #3866dc !important;
+  color: #fff !important;
+}
+.gen-btn, .launch-btn, .copy-btn {
+  box-shadow: none !important;
+}
+.gen-btn:hover, .launch-btn:hover, .copy-btn:hover { filter: brightness(.96); }
+
+#scroll-progress { background: linear-gradient(90deg, #3866dc, #4aa6b5, #e66c5d) !important; }
+::-webkit-scrollbar-thumb { background: #9ab4eb !important; }
+::-webkit-scrollbar-thumb:hover { background: #3866dc !important; }
+.gradient-text {
+  background-image: linear-gradient(100deg, #3866dc, #4aa6b5, #e66c5d) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+  }
+}
