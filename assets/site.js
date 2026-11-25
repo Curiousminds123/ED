@@ -120,7 +120,7 @@ if (heroTitle) {
       character.classList.add('is-visible');
       playKeySound();
       characterIndex += 1;
-      window.setTimeout(typeNextCharacter, character.textContent === '.' ? 145 : 42);
+      window.setTimeout(typeNextCharacter, character.textContent === '.' ? 220 : 78);
     }
 
     if (document.visibilityState === 'visible') {
@@ -159,13 +159,12 @@ if (heroCanvas instanceof HTMLCanvasElement) {
     let previousFrame = 0;
     let introStartedAt = 0;
     let introFinished = motionSetting.matches;
-    let bookOpen = motionSetting.matches ? 1 : 0;
 
     function finishIntro() {
-      bookOpen = 1;
       balls.forEach((ball) => {
         ball.x = width * ball.startX;
         ball.y = height * ball.startY;
+        ball.launchProgress = 1;
         ball.introDone = true;
       });
       introFinished = true;
@@ -196,7 +195,8 @@ if (heroCanvas instanceof HTMLCanvasElement) {
           ball.y = height * ball.startY;
         } else {
           ball.x = width * (.32 + index * .12);
-          ball.y = height * .7;
+          const layerHeight = Math.max(10, Math.min(15, height * .035));
+          ball.y = height * .78 - layerHeight * 5 + radius * .28;
           ball.launchX = ball.x;
           ball.launchY = ball.y;
         }
@@ -218,7 +218,24 @@ if (heroCanvas instanceof HTMLCanvasElement) {
       context.stroke();
       context.restore();
 
-      drawBook();
+      drawBooksAndPlants();
+
+      balls.forEach((ball) => {
+        const progress = ball.launchProgress || 0;
+        if (progress <= 0 || progress >= 1) return;
+        context.save();
+        context.globalAlpha = (1 - progress) * .32;
+        context.fillStyle = ball.color;
+        for (let bubble = 0; bubble < 3; bubble += 1) {
+          const radius = Math.max(2, ball.radius * (.12 - bubble * .025));
+          const offset = ball.radius * (.72 + bubble * .5);
+          const drift = Math.sin(progress * 5 + bubble + ball.startX * 10) * radius * 2;
+          context.beginPath();
+          context.arc(ball.x + drift, ball.y + offset, radius, 0, Math.PI * 2);
+          context.fill();
+        }
+        context.restore();
+      });
 
       balls.forEach((ball, index) => {
         const selected = index === selectedIndex;
@@ -254,98 +271,94 @@ if (heroCanvas instanceof HTMLCanvasElement) {
       });
     }
 
-    function drawBook() {
+    function drawBooksAndPlants() {
       const centerX = width * .5;
       const bottom = height * .78;
       const bookWidth = Math.min(width * .72, 340);
-      const pageHeight = Math.min(height * .22, 98);
-      const closedAmount = 1 - bookOpen;
+      const layerHeight = Math.max(10, Math.min(15, height * .035));
+      const widths = [.94, 1, .9, .97, .84];
+      const bookColors = ['#d27659', '#4f73ad', '#d2a44e', '#668765', '#554b76'];
 
-      if (closedAmount > 0) {
+      function drawLeaf(x, y, angle, length, color) {
         context.save();
-        context.globalAlpha = closedAmount;
-        context.translate(centerX, bottom - 6);
-        context.rotate(-.035);
-        context.fillStyle = '#29453c';
+        context.translate(x, y);
+        context.rotate(angle);
+        context.fillStyle = color;
         context.beginPath();
-        context.moveTo(-bookWidth * .48, -pageHeight * .42);
-        context.quadraticCurveTo(-bookWidth * .5, -pageHeight * .48, -bookWidth * .46, -pageHeight * .5);
-        context.lineTo(bookWidth * .46, -pageHeight * .5);
-        context.quadraticCurveTo(bookWidth * .5, -pageHeight * .48, bookWidth * .48, -pageHeight * .42);
-        context.lineTo(bookWidth * .45, 0);
-        context.lineTo(-bookWidth * .45, 0);
-        context.closePath();
+        context.moveTo(0, 0);
+        context.quadraticCurveTo(length * .35, -length * .42, length, 0);
+        context.quadraticCurveTo(length * .42, length * .35, 0, 0);
         context.fill();
-        context.fillStyle = '#fffdf6';
-        context.fillRect(-bookWidth * .43, -pageHeight * .38, bookWidth * .86, pageHeight * .27);
-        context.fillStyle = '#d7bc7e';
-        context.fillRect(-bookWidth * .48, -pageHeight * .42, bookWidth * .96, 3);
+        context.strokeStyle = 'rgba(32,74,50,.34)';
+        context.lineWidth = 1;
+        context.beginPath();
+        context.moveTo(0, 0);
+        context.lineTo(length * .78, 0);
+        context.stroke();
         context.restore();
       }
 
-      if (bookOpen <= 0) return;
-
-      context.save();
-      context.globalAlpha = bookOpen;
-      const spread = bookWidth * .5 * bookOpen;
-      const top = bottom - pageHeight * (.35 + .65 * bookOpen);
-      const pageBase = bottom - 10;
-
-      context.shadowColor = 'rgba(20,20,19,.2)';
-      context.shadowBlur = 12;
-      context.shadowOffsetY = 5;
-      context.fillStyle = '#29453c';
-      context.beginPath();
-      context.moveTo(centerX, pageBase + 5);
-      context.quadraticCurveTo(centerX - spread * .68, pageBase + 2, centerX - spread - 5, top + pageHeight * .15);
-      context.lineTo(centerX - spread - 4, top - 4);
-      context.quadraticCurveTo(centerX - spread * .45, top - pageHeight * .12, centerX, top + pageHeight * .05);
-      context.quadraticCurveTo(centerX + spread * .45, top - pageHeight * .12, centerX + spread + 4, top - 4);
-      context.lineTo(centerX + spread + 5, top + pageHeight * .15);
-      context.quadraticCurveTo(centerX + spread * .68, pageBase + 2, centerX, pageBase + 5);
-      context.closePath();
-      context.fill();
-      context.shadowColor = 'transparent';
-
-      context.fillStyle = '#fffdf7';
-      context.strokeStyle = '#d9d4c8';
-      context.lineWidth = 1;
-      context.beginPath();
-      context.moveTo(centerX, pageBase);
-      context.quadraticCurveTo(centerX - spread * .48, pageBase - 10, centerX - spread, top + pageHeight * .15);
-      context.quadraticCurveTo(centerX - spread * .55, top - pageHeight * .08, centerX, top + pageHeight * .06);
-      context.closePath();
-      context.fill();
-      context.stroke();
-      context.beginPath();
-      context.moveTo(centerX, pageBase);
-      context.quadraticCurveTo(centerX + spread * .48, pageBase - 10, centerX + spread, top + pageHeight * .15);
-      context.quadraticCurveTo(centerX + spread * .55, top - pageHeight * .08, centerX, top + pageHeight * .06);
-      context.closePath();
-      context.fill();
-      context.stroke();
-
-      context.strokeStyle = 'rgba(80,69,55,.16)';
-      context.lineWidth = 1;
-      for (let line = 0; line < 3; line += 1) {
-        const lineY = top + pageHeight * (.3 + line * .15);
+      function drawPlant(baseX, direction) {
+        const baseY = bottom - 8;
+        const stemHeight = height * .31;
+        const stemX = baseX + direction * 7;
+        context.save();
+        context.strokeStyle = '#527d59';
+        context.lineWidth = 2;
         context.beginPath();
-        context.moveTo(centerX - spread * .83, lineY);
-        context.quadraticCurveTo(centerX - spread * .48, lineY + 2, centerX - 7, lineY + 4);
+        context.moveTo(baseX, baseY);
+        context.quadraticCurveTo(baseX + direction * 15, baseY - stemHeight * .45, stemX, baseY - stemHeight);
         context.stroke();
-        context.beginPath();
-        context.moveTo(centerX + 7, lineY + 4);
-        context.quadraticCurveTo(centerX + spread * .48, lineY + 2, centerX + spread * .83, lineY);
-        context.stroke();
+        for (let leaf = 0; leaf < 4; leaf += 1) {
+          const progress = .24 + leaf * .16;
+          const x = baseX + direction * 7 * progress;
+          const y = baseY - stemHeight * progress;
+          const size = Math.min(40, width * .14) * (1 - leaf * .06);
+          drawLeaf(x, y, direction < 0 ? Math.PI + .18 : -.18, size, leaf % 2 ? '#89a96e' : '#6f9867');
+          drawLeaf(x, y + 2, direction < 0 ? -.52 : Math.PI + .52, size * .82, leaf % 2 ? '#739663' : '#9bb67d');
+        }
+        context.restore();
       }
 
-      context.strokeStyle = '#29453c';
-      context.lineWidth = 4;
-      context.beginPath();
-      context.moveTo(centerX, top + pageHeight * .08);
-      context.lineTo(centerX, pageBase + 3);
-      context.stroke();
-      context.restore();
+      function drawRoundedBook(x, y, bookWidth, bookHeight, color) {
+        const radius = Math.min(6, bookHeight * .3);
+        context.fillStyle = color;
+        context.beginPath();
+        context.moveTo(x + radius, y);
+        context.lineTo(x + bookWidth - radius, y);
+        context.quadraticCurveTo(x + bookWidth, y, x + bookWidth, y + radius);
+        context.lineTo(x + bookWidth, y + bookHeight - radius);
+        context.quadraticCurveTo(x + bookWidth, y + bookHeight, x + bookWidth - radius, y + bookHeight);
+        context.lineTo(x + radius, y + bookHeight);
+        context.quadraticCurveTo(x, y + bookHeight, x, y + bookHeight - radius);
+        context.lineTo(x, y + radius);
+        context.quadraticCurveTo(x, y, x + radius, y);
+        context.closePath();
+        context.fill();
+      }
+
+      drawPlant(centerX - bookWidth * .44, -1);
+      drawPlant(centerX + bookWidth * .44, 1);
+
+      bookColors.forEach((color, index) => {
+        const layerWidth = bookWidth * widths[index];
+        const offset = index % 2 ? bookWidth * .025 : -bookWidth * .025;
+        const x = centerX - layerWidth * .5 + offset;
+        const y = bottom - layerHeight * (index + 1);
+        context.save();
+        context.shadowColor = 'rgba(20,20,19,.14)';
+        context.shadowBlur = 7;
+        context.shadowOffsetY = 3;
+        drawRoundedBook(x, y, layerWidth, layerHeight - 2, color);
+        context.shadowColor = 'transparent';
+        context.fillStyle = '#fff8e9';
+        context.fillRect(x + 7, y + layerHeight * .43, layerWidth - 14, layerHeight * .28);
+        context.fillStyle = color;
+        context.fillRect(x + 5, y + layerHeight * .72, layerWidth - 10, layerHeight * .17);
+        context.fillStyle = 'rgba(255,255,255,.55)';
+        context.fillRect(x + 13, y + 3, 2, layerHeight - 8);
+        context.restore();
+      });
     }
 
     function animate(timestamp) {
@@ -358,24 +371,24 @@ if (heroCanvas instanceof HTMLCanvasElement) {
       if (!introFinished) {
         if (!introStartedAt) introStartedAt = timestamp;
         const elapsed = timestamp - introStartedAt;
-        const openProgress = Math.min(1, elapsed / 620);
-        bookOpen = openProgress * openProgress * (3 - 2 * openProgress);
         balls.forEach((ball, index) => {
           if (ball.introDone || (dragging && dragging.index === index)) return;
-          const launchProgress = Math.max(0, Math.min(1, (elapsed - 430 - index * 125) / 720));
+          const launchProgress = Math.max(0, Math.min(1, (elapsed - 650 - index * 150) / 760));
+          ball.launchProgress = launchProgress;
           if (launchProgress < 1) {
-            const easedProgress = 1 - (1 - launchProgress) * (1 - launchProgress);
-            ball.x = ball.launchX + (width * ball.startX - ball.launchX) * easedProgress;
+            const easedProgress = 1 - (1 - launchProgress) * (1 - launchProgress) * (1 - launchProgress);
+            const sidewaysKick = Math.sin(launchProgress * Math.PI) * (index % 2 ? 1 : -1) * Math.min(14, width * .03);
+            ball.x = ball.launchX + (width * ball.startX - ball.launchX) * easedProgress + sidewaysKick;
             ball.y = ball.launchY + (height * ball.startY - ball.launchY) * easedProgress
-              - Math.sin(launchProgress * Math.PI) * Math.min(100, height * .24);
+              - Math.sin(launchProgress * Math.PI) * Math.min(115, height * .28);
           } else {
             ball.x = width * ball.startX;
             ball.y = height * ball.startY;
+            ball.launchProgress = 1;
             ball.introDone = true;
           }
         });
         if (balls.every((ball) => ball.introDone)) {
-          bookOpen = 1;
           introFinished = true;
           previousFrame = timestamp;
         }
@@ -509,79 +522,5 @@ if (heroCanvas instanceof HTMLCanvasElement) {
     else window.addEventListener('resize', resizeCanvas);
     resizeCanvas();
     startAnimation();
-  }
-}
-
-const speechButton = document.querySelector('#speech-toggle');
-const soundPlayer = document.querySelector('.sound-player');
-const soundStatus = document.querySelector('#sound-status');
-
-if (speechButton && soundPlayer && soundStatus) {
-  const AudioContextConstructor = window.AudioContext || window.webkitAudioContext;
-  if (!AudioContextConstructor) {
-    speechButton.disabled = true;
-    speechButton.setAttribute('aria-label', 'El audio no está disponible en este navegador');
-    soundStatus.textContent = 'AUDIO NO DISPONIBLE';
-  } else {
-    let audioContext = null;
-    let isPlaying = false;
-    const notes = [392, 523.25, 659.25, 783.99, 659.25, 587.33, 523.25, 392];
-    const noteDuration = .48;
-
-    function updateAudioControl(playing, status) {
-      isPlaying = playing;
-      speechButton.setAttribute('aria-pressed', String(playing));
-      speechButton.setAttribute('aria-label', playing ? 'Pausar el interludio' : 'Reproducir el interludio');
-      speechButton.querySelector('.sound-icon').textContent = playing ? 'Ⅱ' : '▶';
-      soundPlayer.classList.toggle('is-playing', playing);
-      soundStatus.textContent = status;
-    }
-
-    function playMelody() {
-      const startAt = audioContext.currentTime + .04;
-      notes.forEach((frequency, index) => {
-        const start = startAt + index * noteDuration;
-        const oscillator = audioContext.createOscillator();
-        const envelope = audioContext.createGain();
-        oscillator.type = 'sine';
-        oscillator.frequency.value = frequency;
-        envelope.gain.setValueAtTime(.0001, start);
-        envelope.gain.exponentialRampToValueAtTime(.075, start + .035);
-        envelope.gain.exponentialRampToValueAtTime(.0001, start + noteDuration * .9);
-        oscillator.connect(envelope);
-        envelope.connect(audioContext.destination);
-        oscillator.start(start);
-        oscillator.stop(start + noteDuration);
-        if (index === notes.length - 1) {
-          oscillator.addEventListener('ended', () => {
-            if (isPlaying) {
-              updateAudioControl(false, 'PISTA LOCAL · 00:04');
-              audioContext.suspend();
-            }
-          }, { once: true });
-        }
-      });
-    }
-
-    speechButton.addEventListener('click', async () => {
-      try {
-        if (!audioContext) audioContext = new AudioContextConstructor();
-        if (isPlaying) {
-          await audioContext.suspend();
-          updateAudioControl(false, 'EN PAUSA');
-          return;
-        }
-        await audioContext.resume();
-        if (soundStatus.textContent !== 'EN PAUSA') playMelody();
-        updateAudioControl(true, 'REPRODUCIENDO · 00:04');
-      } catch (error) {
-        updateAudioControl(false, 'NO SE PUDO REPRODUCIR');
-        console.error('Error al reproducir el interludio:', error);
-      }
-    });
-
-    window.addEventListener('pagehide', () => {
-      if (audioContext && audioContext.state !== 'closed') audioContext.close();
-    }, { once: true });
   }
 }

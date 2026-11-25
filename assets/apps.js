@@ -67,37 +67,75 @@ function renderLicense(parent, license) {
 
 function createAppCard(app) {
   const card = document.createElement('article');
-  card.className = 'app-card';
-  appendText(card, 'h3', '', app.title);
-  appendText(card, 'p', 'app-author', `Por ${app.author}`);
-  appendText(card, 'p', 'app-description', app.description || 'La ficha no incluye una descripción.');
+  card.className = app.isOwn ? 'app-card app-card-own' : 'app-card';
+  const artwork = document.createElement('div');
+  artwork.className = 'app-card-art';
+  artwork.setAttribute('aria-hidden', 'true');
+  appendText(artwork, 'span', 'app-card-art-label', app.isOwn ? 'Recurso propio' : (app.area || app.type || 'RECURSO').split(/[,;|]/)[0].trim());
+  appendText(artwork, 'span', 'app-card-art-mark', app.visualMark || (app.title || '✳').trim().slice(0, 1).toUpperCase());
+  card.append(artwork);
+
+  const content = document.createElement('div');
+  content.className = 'app-card-content';
+  card.append(content);
+  appendText(content, 'h3', '', app.title);
+  appendText(content, 'p', 'app-author', `Por ${app.author}`);
+  appendText(content, 'p', 'app-description', app.description || 'La ficha no incluye una descripción.');
 
   const meta = document.createElement('div');
   meta.className = 'app-meta';
   createTag(meta, app.area);
   createTag(meta, app.level);
   createTag(meta, app.type);
-  card.append(meta);
+  content.append(meta);
 
   const license = document.createElement('div');
   license.className = 'app-license';
-  renderLicense(license, app.license);
-  card.append(license);
+  if (app.isOwn) {
+    appendText(license, 'span', 'license-label', 'Recurso propio');
+    appendText(license, 'div', 'license-list', 'No se indica una licencia de reutilización');
+  } else renderLicense(license, app.license);
+  content.append(license);
 
   const open = document.createElement('a');
   open.className = 'app-open';
   open.href = app.url;
-  open.target = '_blank';
-  open.rel = 'noopener';
+  if (/^https?:\/\//i.test(app.url)) {
+    open.target = '_blank';
+    open.rel = 'noopener';
+  }
   open.append(document.createTextNode('Abrir aplicación'));
   appendText(open, 'span', '', '↗');
-  card.append(open);
+  content.append(open);
   return card;
 }
 
 function normalize(value) {
   return String(value || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase('es');
 }
+
+function isFeaturedAuthor(author) {
+  const normalized = normalize(author).replace(/\./g, '').trim();
+  return /^felip sarroca(?:\s+i\s+gil)?$/.test(normalized);
+}
+
+function isLanguageResource(app) {
+  return String(app.area || '').split(/[,;|]/).some((area) => normalize(area.trim()) === 'idiomas');
+}
+
+const featuredLanguageApps = [
+  {
+    title: 'Unit 6 · Inglés B1.1',
+    author: 'Ana H. Iranzo',
+    description: 'Unidad interactiva de inglés para el nivel B1.1.',
+    area: 'Idiomas',
+    level: 'B1.1',
+    type: 'Inglés',
+    url: 'https://curiousminds123.github.io/UNIT6B1.1/',
+    visualMark: 'EN',
+    isOwn: true
+  }
+];
 
 function renderApps(apps) {
   const query = normalize(searchInput.value.trim());
@@ -128,9 +166,13 @@ async function loadCatalog() {
     if (!response.ok) throw new Error(`No se pudo leer el catálogo (${response.status}).`);
     const catalog = await response.json();
     if (!Array.isArray(catalog.apps)) throw new Error('El formato del catálogo no es válido.');
+    const featuredApps = [
+      ...featuredLanguageApps,
+      ...catalog.apps.filter((app) => isFeaturedAuthor(app.author) && isLanguageResource(app))
+    ];
 
     const areas = new Set();
-    catalog.apps.forEach((app) => {
+    featuredApps.forEach((app) => {
       app.area.split(/[,;|]/).map((item) => item.trim()).filter(Boolean).forEach((area) => areas.add(area));
     });
     [...areas].sort((a, b) => a.localeCompare(b, 'es')).forEach((area) => {
@@ -142,21 +184,21 @@ async function loadCatalog() {
 
     searchInput.addEventListener('input', () => {
       currentPage = 1;
-      renderApps(catalog.apps);
+      renderApps(featuredApps);
     });
     areaFilter.addEventListener('change', () => {
       currentPage = 1;
-      renderApps(catalog.apps);
+      renderApps(featuredApps);
     });
     previousPage.addEventListener('click', () => {
       currentPage -= 1;
-      renderApps(catalog.apps);
+      renderApps(featuredApps);
     });
     nextPage.addEventListener('click', () => {
       currentPage += 1;
-      renderApps(catalog.apps);
+      renderApps(featuredApps);
     });
-    renderApps(catalog.apps);
+    renderApps(featuredApps);
     appList.setAttribute('aria-busy', 'false');
   } catch (error) {
     appList.setAttribute('aria-busy', 'false');

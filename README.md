@@ -4,19 +4,19 @@ Portal de herramientas para el trabajo docente, creado por Ana Hernández Iranzo
 
 ## Estructura
 
-- `index.html`: portada con titular animado al cargar, juguete interactivo con un libro que se abre y esferas que saltan, mapa de nueve herramientas y acceso a demos destacadas.
-- `apps.html`: catálogo con búsqueda y filtro por área, además de una selección de proyectos externos separada de las fichas con licencia. Se conservan 108 fichas de otros autores y sus atribuciones originales.
+- `index.html`: portada con titular animado al cargar, juguete interactivo con una pila de libros, plantas y esferas que saltan, mapa de nueve herramientas y acceso a demos destacadas.
+- `apps.html`: catálogo visual con búsqueda y filtro por área; muestra cinco recursos de idiomas de Ana H. Iranzo y Felip Sarroca.
 - `data/apps.json`: selección de fichas del repositorio comunitario Vibe Coding Educativo con licencias que incluyen una cláusula de compartir igual (CC BY-SA y CC BY-NC-SA).
 - `modulo-*`: herramientas docentes de EDOCENTIA.
 - `app-ia.html`, `app-prompts.html`, `app-rubricas.html`: herramientas complementarias.
 - `normativa-cv/`: recursos de normativa docente de la Comunitat Valenciana.
-- `assets/`: estilos, navegación compartida y lógica de la portada y el catálogo. La portada incluye sonidos de teclado generados localmente, un juguete Canvas accesible y un mapa interactivo de herramientas.
+- `assets/`: estilos, navegación compartida y lógica de la portada y el catálogo. La portada incluye sonidos de teclado generados localmente, un juguete Canvas accesible y un mapa interactivo de herramientas. `data/apps.json` conserva las 108 fichas de origen; el catálogo muestra la unidad de inglés de Ana H. Iranzo y cuatro recursos de idiomas de Felip Sarroca.
 
 ## Catálogo abierto y atribución
 
 Las fichas de `data/apps.json` se han seleccionado del [Repositorio de recursos educativos digitales de Vibe Coding Educativo](https://github.com/Vibe-Coding-Educativo/app_edu), consultado el 3 de noviembre de 2026. Se conservan el título, la descripción, el enlace, el autor y la licencia declarada por cada recurso. La selección incluye licencias CC BY-SA y CC BY-NC-SA; algunas fichas distinguen entre AGPL para el código y CC BY-SA para los contenidos. La página muestra esas licencias sin sustituirlas por una licencia única ni eliminar las restricciones de uso comercial.
 
-La biblioteca aloja las fichas, no copia ni vuelve a publicar las aplicaciones enlazadas. Las aplicaciones se abren en los sitios de sus autores. La licencia de cada herramienta propia de EDOCENTIA no se infiere de la licencia de las fichas externas.
+La biblioteca aloja las fichas, no copia ni vuelve a publicar las aplicaciones enlazadas. Las aplicaciones se abren en los sitios de sus autores. La unidad propia de inglés no declara una licencia de reutilización; no se le atribuye una licencia Creative Commons.
 
 ## Vista local
 
