@@ -76,14 +76,30 @@
 
 .app-grid { gap: 18px; }
 .app-card {
+  position: relative;
   overflow: hidden;
   padding: 0;
-  border-radius: 16px;
+  border-radius: 14px 18px 13px 16px;
   background: #fff;
-  box-shadow: 0 8px 22px rgba(20,20,19,.045);
+  box-shadow: 4px 5px 0 rgba(245,158,11,.17), 0 8px 22px rgba(20,20,19,.045);
   transition: transform .35s cubic-bezier(.22,1,.36,1), border-color .2s, box-shadow .25s;
 }
-.app-card:hover { transform: translateY(-4px); border-color: #b6c4b6; box-shadow: 0 18px 40px rgba(20,20,19,.11); }
+.app-card:nth-child(even) { border-radius: 18px 13px 16px 12px; }
+.app-card::before {
+  content: "";
+  width: 54px;
+  height: 15px;
+  position: absolute;
+  z-index: 2;
+  top: 10px;
+  left: 50%;
+  border: 1px solid rgba(20,20,19,.08);
+  background: rgba(255,244,198,.88);
+  pointer-events: none;
+  transform: translateX(-50%) rotate(-3deg);
+}
+.app-card:nth-child(even)::before { transform: translateX(-50%) rotate(3deg); }
+.app-card:hover { transform: translateY(-4px) rotate(.25deg); border-color: #b6c4b6; box-shadow: 5px 6px 0 rgba(245,158,11,.19), 0 18px 40px rgba(20,20,19,.11); }
 .app-card-art {
   min-height: 142px;
   aspect-ratio: 16 / 9;
@@ -92,7 +108,7 @@
   align-items: flex-end;
   overflow: hidden;
   padding: 17px 19px;
-  border-radius: 15px 15px 0 0;
+  border-radius: 14px 17px 0 0;
   background: #f6c7b5;
 }
 .app-card-art::before {
@@ -103,7 +119,7 @@
   top: 8%;
   right: 12%;
   border: 1px solid rgba(20,20,19,.28);
-  border-radius: 50%;
+  border-radius: 47% 53% 48% 52% / 52% 45% 55% 48%;
 }
 .app-card-art::after {
   content: "";
@@ -113,7 +129,7 @@
   top: 20%;
   right: 19%;
   border: 1px solid rgba(20,20,19,.2);
-  border-radius: 50%;
+  border-radius: 54% 46% 52% 48% / 46% 54% 48% 52%;
 }
 .app-card:nth-child(4n + 2) .app-card-art { background: #dce5fc; }
 .app-card:nth-child(4n + 3) .app-card-art { background: #e4eee6; }
@@ -136,11 +152,11 @@
   right: 20%;
   display: grid;
   place-items: center;
-  border-radius: 50%;
+  border-radius: 46% 54% 51% 49% / 52% 46% 54% 48%;
   background: var(--terracotta);
   box-shadow: 0 9px 22px rgba(20,20,19,.12);
   color: white;
-  font: 600 31px/1 var(--serif);
+  font: 700 34px/1 var(--hand);
   transform: translateY(-50%) rotate(9deg);
   transition: transform .35s cubic-bezier(.22,1,.36,1);
 }
