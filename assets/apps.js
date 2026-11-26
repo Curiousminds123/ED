@@ -117,15 +117,6 @@ function isLanguageResource(app) {
 
 const featuredResources = [
   {
-    title: 'Worldline Dancer: a dancer’s path through space & time, in 3D',
-    author: 'Techartist',
-    description: 'Una experiencia en 3D sobre el recorrido de una bailarina por el espacio y el tiempo.',
-    area: 'Arte y 3D',
-    type: 'Experiencia interactiva',
-    url: 'https://iamtechartist.com/worldline-dancer/',
-    visualMark: '✦'
-  },
-  {
     title: 'App italiano A2–C1 · ayuda en español',
     author: 'Ana H. Iranzo',
     description: 'Una app para practicar italiano de A2 a C1 con apoyo en español.',
@@ -225,13 +216,22 @@ const featuredResources = [
     visualMark: 'A'
   },
   {
-    title: 'La primera volta al món · Magallanes i Elcano',
+    title: 'El viaje de Magallanes y Elcano · Primera vuelta al mundo',
     author: 'Felip Sarroca',
-    description: 'Un recorregut interactiu per la primera volta al món.',
+    description: 'Recorrido interactivo por el viaje de Magallanes y Elcano y la primera vuelta al mundo.',
     area: 'Ciencias sociales',
     type: 'Historia',
     url: 'https://felipsarroca.github.io/edu-apps/VoltaMon/#sevilla',
     visualMark: '↗'
+  },
+  {
+    title: 'El Renacimiento',
+    author: 'Felip Sarroca',
+    description: 'Unidad interactiva para explorar el arte y el humanismo del Renacimiento.',
+    area: 'Ciencias sociales, Arte',
+    type: 'Historia del arte',
+    url: 'https://felipsarroca.github.io/web/Renaixement/',
+    visualMark: 'R'
   },
   {
     title: 'Arduino Uno R3 — Robotics Lab',
@@ -252,22 +252,22 @@ const featuredResources = [
     visualMark: 'DNA'
   },
   {
-    title: 'Cuaderno NotebookLM · 01',
-    author: 'Creador no indicado',
-    description: 'Abre el cuaderno educativo compartido en NotebookLM.',
-    area: 'Educación',
+    title: 'Platón · Filosofía',
+    author: 'Ana H. Iranzo',
+    description: 'Cuaderno de NotebookLM sobre Platón y filosofía, creado por Ana H. Iranzo.',
+    area: 'Filosofía',
     type: 'NotebookLM',
     url: 'https://notebook.google.com/notebook/3684293d-e1a7-45ef-a876-fc80d70d5f9e',
-    visualMark: 'LM'
+    visualMark: 'PL'
   },
   {
-    title: 'Cuaderno NotebookLM · 02',
-    author: 'Creador no indicado',
-    description: 'Abre el cuaderno educativo compartido en NotebookLM.',
-    area: 'Educación',
+    title: 'El modelo atómico',
+    author: 'Ana H. Iranzo',
+    description: 'Cuaderno de NotebookLM sobre el modelo atómico, creado por Ana H. Iranzo.',
+    area: 'Ciencia y tecnología',
     type: 'NotebookLM',
     url: 'https://notebooklm.link.google/4BSsrfT4pWWZ',
-    visualMark: 'LM'
+    visualMark: 'MA'
   }
 ];
 
@@ -317,9 +317,13 @@ async function loadCatalog() {
     const catalog = await response.json();
     if (!Array.isArray(catalog.apps)) throw new Error('El formato del catálogo no es válido.');
     const featuredApps = [
-      ...featuredResources,
       ...featuredLanguageApps,
-      ...catalog.apps.filter((app) => isFeaturedAuthor(app.author) && isLanguageResource(app))
+      ...featuredResources,
+      ...catalog.apps.filter((app) => (
+        isFeaturedAuthor(app.author)
+        && isLanguageResource(app)
+        && normalize(app.title) !== 'joc del penjat'
+      ))
     ];
 
     const areas = new Set();

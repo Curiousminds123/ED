@@ -5,12 +5,12 @@ Portal de herramientas para el trabajo docente, creado por Ana Hernández Iranzo
 ## Estructura
 
 - `index.html`: portada con titular animado al cargar, juguete interactivo con una pila de libros, plantas y esferas que saltan, mapa de nueve herramientas y acceso a demos destacadas.
-- `apps.html`: biblioteca en tarjetas compactas, con búsqueda y filtros por asignatura y creador; reúne los enlaces destacados, dos cuadernos de NotebookLM y cinco recursos seleccionados de idiomas.
+- `apps.html`: biblioteca en tarjetas compactas, con búsqueda y filtros por asignatura y creador; reúne los enlaces destacados, dos cuadernos de NotebookLM y cuatro recursos seleccionados de idiomas.
 - `data/apps.json`: selección de fichas del repositorio comunitario Vibe Coding Educativo con licencias que incluyen una cláusula de compartir igual (CC BY-SA y CC BY-NC-SA).
 - `modulo-*`: herramientas docentes de EDOCENTIA.
 - `app-ia.html`, `app-prompts.html`, `app-rubricas.html`: herramientas complementarias.
 - `normativa-cv/`: recursos de normativa docente de la Comunitat Valenciana.
-- `assets/`: estilos, navegación compartida y lógica de la portada y el catálogo. La portada incluye sonidos de teclado generados localmente, un juguete Canvas accesible y un mapa interactivo de herramientas. `data/apps.json` conserva las 108 fichas de origen; el catálogo muestra la unidad de inglés de Ana H. Iranzo y cuatro recursos de idiomas de Felip Sarroca.
+- `assets/`: estilos, navegación compartida y lógica de la portada y el catálogo. La portada incluye sonidos de teclado generados localmente, un juguete Canvas accesible y un mapa interactivo de herramientas. `data/apps.json` conserva las 108 fichas de origen; el catálogo muestra la unidad de inglés de Ana H. Iranzo y tres recursos de idiomas de Felip Sarroca.
 
 ## Catálogo abierto y atribución
 
